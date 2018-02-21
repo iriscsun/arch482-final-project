@@ -24,29 +24,36 @@
 		<div id="nav">
 		</div>
 		<div class="container">
+		  <div class="row">
+		    <div class="col-6">
+		      <h1>Welcome to <br>Recipe World!</h1>
+		    </div>
+		    <div class="col">
+					<div id="credentials">
+						<form action="/action_page.php">
+							<h3>Login</h3>
+						 	<input class="field" type="text" name="user" placeholder="Username"/><br>
+						  <input class="field" type="text" name="pass" placeholder="Password"/><br>
+								<button type="submit" class="btn btn-outline-success credentials-btn" value="Login">Login</button>
+								<br><br>
+								<h3>Sign Up</h3>
+							  <input class="field" type="text" name="user" placeholder="First Name"/><br>
+								<input class="field" type="text" name="user" placeholder="Last Name"/><br>
+							  <input class="field" type="text" name="user" placeholder="Email"/><br>
+							  <input class="field" type="text" name="pass" placeholder="Username"/><br>
+							  <input class="field" type="text" name="pass" placeholder="Password"/><br>
+								<button type="submit" class="btn btn-outline-success credentials-btn" value="Sign Up">Sign Up</button>
+						</form>
+					</div>
+				</div>
+		   </div>
+		 </div>
 
-			<h1>Welcome to <br>Recipe World!</h1>
-			<div>
-				<form action="/action_page.php">
-					<h3>Login</h3>
-				  Username: <input type="text" name="user"><br>
-				  Password: <input type="text" name="pass"><br>
-				  <input type="submit" value="Login">
-
-					<h3>Sign Up</h3>
-				  Full Name: <input type="text" name="user"><br>
-					Email: <input type="text" name="user"><br>
-				  Username: <input type="text" name="pass"><br>
-				  Password: <input type="text" name="pass"><br>
-				  <input type="submit" value="Sign Up">
-				</form>
-			</div>
-		</div>
 
 		<!-- KEEP THESE LINKS HERE OR CODE BREAKS -->
 		<!-- base.js -->
 		<script src="js/base.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	</body>

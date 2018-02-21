@@ -1,19 +1,23 @@
+h4 {
+	padding-top: 15px;
+}
+
 .container {
 	padding-top:30px;
 
 }
 
-#credentials {
-	max-width: 350px;
+#recipe {
+  margin: 0 auto;
+	max-width: 550px;
 	width: 80%;
 	border: 1px solid #ededed;
 	padding: 30px 30px 10px 30px;
 	margin-top: 20px;
-	float:right;
 	background-color: #f7f7f7;
 }
 
-.credentials-btn{
+.form-btn {
 	float:right;
 	margin-top: 10px;
 	margin-bottom: 15px;
@@ -24,4 +28,12 @@
 	padding: 10px;
 	margin-top: 5px;
 	margin-bottom: 5px;
+}
+
+#text-input {
+	width: 100%;
+	height: 200px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 10px;
 }
