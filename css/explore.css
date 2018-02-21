@@ -1,0 +1,26 @@
+#search-form {
+	max-width:800px;
+	width:80%;
+}
+
+.container {
+	padding-top:30px;
+
+}
+
+.navbar {
+	width:80%;
+	margin: 0 auto;
+}
+
+.nav-container {
+	background-color: #f7f7f7;
+}
+
+#nav-1 {
+	padding-left: 40px;
+}
+
+.nav-item {
+	padding-left: 15px;
+}
