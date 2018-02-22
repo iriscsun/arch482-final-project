@@ -2,10 +2,12 @@ h4 {
 	padding-top: 15px;
 }
 
+/*
 .container {
 	padding-top:30px;
 
 }
+*/
 
 #recipe {
   margin: 0 auto;
@@ -23,12 +25,14 @@ h4 {
 	margin-bottom: 15px;
 }
 
+/*
 .field {
 	width: 100%;
 	padding: 10px;
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
+*/
 
 #text-input {
 	width: 100%;
@@ -38,13 +42,19 @@ h4 {
 	padding: 10px;
 }
 
+/*
 .navbar {
 	width:80%;
 	margin: 0 auto;
+	background-color: #dfd7ca;
 }
 
 .nav-container {
-	background-color: #f7f7f7;
+	background-color: #dfd7ca;
+}
+
+.nav {
+	background-color: #dfd7ca;
 }
 
 #nav-1 {
@@ -54,3 +64,5 @@ h4 {
 .nav-item {
 	padding-left: 15px;
 }
+
+*/
