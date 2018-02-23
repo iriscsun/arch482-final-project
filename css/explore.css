@@ -10,30 +10,11 @@
 	height: 1000px;
 }
 
-.navbar {
-	width:80%;
-	margin: 0 auto;
-	background-color: #dfd7ca;
+.tag-group {
+	margin-top: 30px;
 }
 
-.nav-container {
-	background-color: #dfd7ca;
-}
-
-.nav {
-	background-color: #dfd7ca;
-}
-
-#nav-1 {
-	padding-left: 40px;
-}
-
-.nav-item {
-	padding-left: 15px;
-}
-
-body {
-	background-image: url("../imgs/explore.jpg");
-	background-repeat:no-repeat;
-  background-size: cover;
+.tag {
+	border-radius: 20px;
+	margin-right: 10px;
 }

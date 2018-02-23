@@ -1,12 +1,1 @@
-.container {
-	padding-top:30px;
-	max-width: 925px;
-	width: 90%;
-	height: 1000px;
-}
 
-body {
-	background-image: url("../imgs/profile.jpg");
-	background-repeat:no-repeat;
-  background-size: cover;
-}

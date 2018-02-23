@@ -1,22 +1,16 @@
 h4 {
-	padding-top: 15px;
+	padding-top: 25px;
 }
-
-/*
-.container {
-	padding-top:30px;
-
-}
-*/
 
 #recipe {
   margin: 0 auto;
 	max-width: 550px;
 	width: 80%;
 	border: 1px solid #ededed;
-	padding: 30px 30px 10px 30px;
+	padding: 10px 30px 10px 30px;
 	margin-top: 20px;
 	background-color: #f7f7f7;
+	margin-bottom: 50px;
 }
 
 .form-btn {
@@ -25,44 +19,33 @@ h4 {
 	margin-bottom: 15px;
 }
 
-/*
-.field {
-	width: 100%;
-	padding: 10px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
-*/
-
 #text-input {
 	width: 100%;
 	height: 200px;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	padding: 10px;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	background-color: #fff;
+  border: 1px solid #ccc;
+	border-radius: 4px;
 }
 
-/*
-.navbar {
-	width:80%;
-	margin: 0 auto;
-	background-color: #dfd7ca;
+.form-group{
+	margin-top: 10px;
+	border: 1px solid #ccc;
+	background-color: white;
+	width: 100%;
+	padding: 5px;
+	border-radius: 5px;
+
 }
 
-.nav-container {
-	background-color: #dfd7ca;
+.form-check-input{
+	margin-left: 17px;
+
 }
 
-.nav {
-	background-color: #dfd7ca;
+.form-check-label {
+	margin-left: 18px;
 }
-
-#nav-1 {
-	padding-left: 40px;
-}
-
-.nav-item {
-	padding-left: 15px;
-}
-
-*/
