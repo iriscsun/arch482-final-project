@@ -1,0 +1,22 @@
+{
+  "name": "arch482-final-project",
+  "version": "1.0.0",
+  "description": "Final Project for ARCH 482",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iriscsun/arch482-final-project.git"
+  },
+  "author": "Zubin Chopra, Iris Sun, Jett Tucker, Jacob Etelamaki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iriscsun/arch482-final-project/issues"
+  },
+  "homepage": "https://github.com/iriscsun/arch482-final-project#readme",
+  "dependencies": {
+    "firebase": "^4.10.1"
+  }
+}
