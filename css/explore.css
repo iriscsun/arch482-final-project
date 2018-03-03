@@ -5,22 +5,16 @@
 
 .container {
 	padding-top:30px;
-
+	max-width: 925px;
+	width: 90%;
+	height: 1000px;
 }
 
-.navbar {
-	width:80%;
-	margin: 0 auto;
+.tag-group {
+	margin-top: 30px;
 }
 
-.nav-container {
-	background-color: #f7f7f7;
-}
-
-#nav-1 {
-	padding-left: 40px;
-}
-
-.nav-item {
-	padding-left: 15px;
+.tag {
+	border-radius: 20px;
+	margin-right: 10px;
 }

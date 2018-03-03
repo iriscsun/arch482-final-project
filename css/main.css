@@ -1,3 +1,8 @@
+h1, h2, h3, h4 {
+	color:#ed706b;
+	font-family: 'Poppins'
+}
+
 .container {
 	padding-top:30px;
 
@@ -6,12 +11,42 @@
 #credentials {
 	max-width: 350px;
 	width: 80%;
-	border: 1px solid #ededed;
+	border: 1px solid #dfd7ca;
 	padding: 30px 30px 10px 30px;
 	margin-top: 20px;
 	float:right;
-	background-color: #f7f7f7;
+	background-color: #dfd7ca;
 }
+
+.btn-outline-success{
+	color: #ed706b;
+  background-color: #ed706b;
+  border-color: #ed706b;
+	color: white;
+	font-family: 'Poppins'
+}
+
+.btn-outline-success:hover {
+	color: #ed706b;
+	background-color: rgba(255,255,255,0.8);
+  border-color: #ed706b;
+	color: #ed706b;
+	font-family: 'Poppins'
+}
+
+.btn-outline-success:focus, .btn-outline-success.focus{
+	border-color: #ed706b;
+}
+
+.btn-outline-success:active, .btn-outline-success.active {
+	border-color: #ed706b;
+}
+
+.btn-outline-success:active, .btn-outline-success.active {
+		border-color: #ed706b;
+}
+
+
 
 .credentials-btn{
 	float:right;
@@ -24,21 +59,26 @@
 	padding: 10px;
 	margin-top: 5px;
 	margin-bottom: 5px;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	background-color: #fff;
+  border: 1px solid #ccc;
+	border-radius: 4px;
 }
 
 .navbar {
 	width:80%;
 	margin: 0 auto;
+	background-color: #dfd7ca;
 }
 
 .nav-container {
-	background-color: #f7f7f7;
+	background-color: #dfd7ca;
 }
 
-#nav-1 {
-	padding-left: 40px;
+.nav {
+	background-color: #dfd7ca;
 }
 
 .nav-item {
-	padding-left: 15px;
+	padding-left: 25px;
 }

@@ -9,6 +9,7 @@ $(document).ready(function () {
 var counter = 1;
 var limit = 15;
 
+//adds a new field when the add ingredient button is clicked
 function addInput(divName){
      if (counter == limit)  {
           alert("You have reached the limit of adding " + counter + " inputs");

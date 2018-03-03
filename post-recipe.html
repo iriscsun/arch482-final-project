@@ -15,8 +15,10 @@
 
 		<!-- Our files -->
 		<!-- main.css -->
-		<link rel="stylesheet" href="css/post-recipe.css" />
-
+		<link href="css/post-recipe.css" rel="stylesheet" type="text/css" />
+		<link href="css/main.css" rel="stylesheet" type="text/css" />
+		<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+		<link rel="stylesheet" href="bootstrap-tagsinput.css">
 	</head>
 
 	<body>
@@ -28,27 +30,64 @@
 			<h1>New Recipe</h1>
 			<div class="row">
 				<div id="recipe">
-					<form action="/action_page2.php">
+					<form>
 						<h4>Post Title</h4>
-						<input class="field" type="text" name="user" placeholder="Recipe Name"/><br>
+						<input class="field" type="text" name="recipe-name" placeholder="Recipe Name"/><br>
+
+						<h4>Serving Size</h4>
+				    <select class="form-control" id="exampleFormControlSelect1" name="serving-size">
+				      <option>1 - 2 people</option>
+				      <option>3 - 4 people</option>
+				      <option>5 - 8 people</option>
+				      <option>9 - 12 people</option>
+				      <option>13+ people</option>
+				    </select>
+
+						<h4>Total Recipe Time</h4>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option1">
+						  <label class="form-check-label" for="inlineRadio1">~30 min</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option2">
+						  <label class="form-check-label" for="inlineRadio2">~1 hour</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option3">
+						  <label class="form-check-label" for="inlineRadio2">~2 hours</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option4">
+						  <label class="form-check-label" for="inlineRadio2">+3 hours</label>
+						</div>
+
 						<!--add new field for each ingredient-->
 						<h4>Ingredient List</h4>
 						<div id="ingredient-list">
-								<input class="field" type="text" name="Ingredients[]" placeholder="Ingredient 1">
+								<input class="field" type="text" name="ingredients[]" placeholder="Ingredient 1">
 					  </div>
 						<button type="button" value="Add another ingredient" class="btn btn-outline-success form-btn" onClick="addInput('ingredient-list');">Add Ingredient</button>
 						<br>
+
 						<h4>Cooking Directions</h4>
-						<textarea id="text-input" placeholder="Enter Cooking Directions here..."></textarea><br>
-						<button type="submit" class="btn btn-outline-success form-btn" value="Post Recipe">Post Recipe</button>
+						<textarea id="text-input" name="directions" placeholder="Enter Cooking Directions here..."></textarea><br>
+
+						<h4>Recipe Image</h4>
+						<div class="form-group">
+					    <input type="file" name="recipe-image" class="form-control-file">
+					  </div>
+
+						<h4>Add Tags</h4>
+						<input class="field" type="text" name="tags" value="" data-role="tagsinput" placeholder="Dessert..." />
+						<button type="button" class="btn btn-outline-success form-btn" value="Post Recipe">Post Recipe</button>
 					</form>
 				</div>
 			</div>
-
 		</div>
 		<!-- KEEP THESE LINKS HERE OR CODE BREAKS -->
 		<!-- base.js -->
 		<script src="js/base.js"></script>
+		<script src="bootstrap-tagsinput.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
