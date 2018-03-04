@@ -16,6 +16,7 @@ window.onload = () => {
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
             console.log('user logged in!');
+            console.log(user);
             signout.style.display = "block";
             signout.style.cursor = "pointer";
             signout.addEventListener('click', () => {

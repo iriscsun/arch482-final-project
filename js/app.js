@@ -38,13 +38,27 @@ window.onload = () => {
     
         let email = document.getElementById('email').value;
         let password = document.getElementById('password').value;
-    
-        console.log(email);
-        console.log(password);
+        let firstName = document.getElementById('first-name').value;
+        let lastName = document.getElementById('last-name').value;
+        let userName = document.getElementById('username').value;
     
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(user => {
                 console.log('user ' + user.uid + ' created');
+
+                let postData = {
+                    name: firstName + lastName,
+                    email: email,
+                    username: userName
+                }
+
+                let updates = {};
+                updates['/users/' + user.uid] = postData;
+                firebase.database().ref().update(updates);
+                setTimeout(() => {
+                    window.location.href = "./explore.html";
+                }, 2000);
+
             })
             .catch(err => {
                 console.log(err);
@@ -55,13 +69,13 @@ window.onload = () => {
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
             console.log('user logged in!');
+            console.log(user);
             signout.style.display = "block";
             signout.style.cursor = "pointer";
             signout.addEventListener('click', () => {
                 firebase.auth().signOut();
                 window.location.href = "./index.html";
-            });
-            window.location.href = "./explore.html";   
+            });  
         }
         else {
             console.log('no user logged in!');
