@@ -3,7 +3,7 @@ $(document).ready(function () {
 
 	//load in nav bar to html pages, uncomment this line of code when uploading to server
 	//$('#nav').load('../arch482-final-project/nav.html');
-	$('#nav').load('../nav.html');
+	$('#nav').load('./nav.html');
 });
 
 var counter = 1;

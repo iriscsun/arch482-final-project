@@ -31,7 +31,7 @@ window.onload = () => {
             });
     
     });
-    
+
     signup_form.addEventListener('submit', e => {
         
         e.preventDefault();
@@ -59,7 +59,9 @@ window.onload = () => {
             signout.style.cursor = "pointer";
             signout.addEventListener('click', () => {
                 firebase.auth().signOut();
+                window.location.href = "./index.html";
             });
+            window.location.href = "./explore.html";   
         }
         else {
             console.log('no user logged in!');
