@@ -17,8 +17,13 @@ window.onload = () => {
     let signout = document.getElementById('signout');
     let ref = firebase.database().ref('/recipes');
 
+    ref.once('value').then(snapshot => {
+        console.log(snapshot.val());
+    })
+
     // Listening for new recipes
-    let recipes = ref.on('child_added', snapshot => {
+    ref.on('child_added', snapshot => {
+        console.log(snapshot.val());
         let recipe = recipeToDOMString(snapshot.val());
         $(RECIPE_DOM_SELECTOR).append(recipe);
         $(LOADING_SELECTOR).hide();

@@ -16,25 +16,11 @@ let myRecipes;
 window.onload = () => {
 
     let signout = document.getElementById('signout');
-    
-        
-						
-		/*
-		console.log("user id: " + firebase.auth().currentUser.uid);
-
-		let ref = firebase.database().ref('/users/')
-			ref.once('value')
-				.then(function(snapshot) {
-				console.log(snapshot.val());
-			});
-		*/
-
 
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
             ref = firebase.database().ref('/users/' + user.uid + '/recipes');
-            myRecipes = ref.once('value')
-                        .then(snapshot => {
+            myRecipes = ref.once('value').then(snapshot => {
                             myRecipes = snapshot.val() || [];
                         });
             console.log('user logged in!');
@@ -51,6 +37,7 @@ window.onload = () => {
         else {
             console.log('no user logged in!');
             signout.style.display = "none";
+            window.location.href = "./index.html";
         }
     });
 
