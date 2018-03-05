@@ -47,6 +47,8 @@ window.onload = () => {
             let user_updates = {};
             recipe_updates['/recipes/' + recipekey] = postData;
             user_updates['/users/' + userid + '/recipes'] = myRecipes;
+
+            // Updates firebase database
             firebase.database().ref().update(recipe_updates);
             firebase.database().ref().update(user_updates);
 
