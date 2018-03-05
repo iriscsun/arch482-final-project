@@ -34,12 +34,12 @@
 			<h1>New Recipe</h1>
 			<div class="row">
 				<div id="recipe">
-					<form>
+					<form id="recipe-form">
 						<h4>Post Title</h4>
 						<input id="name" class="field" type="text" name="recipe-name" placeholder="Recipe Name"/><br>
 
 						<h4>Serving Size</h4>
-				    <select class="form-control" id="exampleFormControlSelect1" name="serving-size">
+				    <select id="serving-size" class="form-control" id="exampleFormControlSelect1" name="serving-size">
 				      <option>1 - 2 people</option>
 				      <option>3 - 4 people</option>
 				      <option>5 - 8 people</option>
@@ -68,13 +68,13 @@
 						<!--add new field for each ingredient-->
 						<h4>Ingredient List</h4>
 						<div id="ingredient-list">
-								<input class="field" type="text" name="ingredients[]" placeholder="Ingredient 1">
+								<input class="field ingredient" type="text" name="ingredients[]" placeholder="Ingredient 1">
 					  </div>
 						<button type="button" value="Add another ingredient" class="btn btn-outline-success form-btn" onClick="addInput('ingredient-list');">Add Ingredient</button>
 						<br>
 
 						<h4>Cooking Directions</h4>
-						<textarea id="text-input" name="directions" placeholder="Enter Cooking Directions here..."></textarea><br>
+						<textarea class="cooking-directions" id="text-input" name="directions" placeholder="Enter Cooking Directions here..."></textarea><br>
 
 						<h4>Recipe Image</h4>
 						<div class="form-group">
@@ -82,8 +82,8 @@
 					  </div>
 
 						<h4>Add Tags</h4>
-						<input class="field" type="text" name="tags" value="" data-role="tagsinput" placeholder="Dessert..." />
-						<button type="button" class="btn btn-outline-success form-btn" value="Post Recipe">Post Recipe</button>
+						<input id="tags" class="field" type="text" name="tags" value="" data-role="tagsinput" placeholder="Dessert..." />
+						<button type="submit" class="btn btn-outline-success form-btn" value="Post Recipe">Post Recipe</button>
 					</form>
 				</div>
 			</div>
