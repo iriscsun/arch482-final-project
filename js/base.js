@@ -3,7 +3,7 @@ $(document).ready(function () {
 
 	//load in nav bar to html pages, uncomment this line of code when uploading to server
 	//$('#nav').load('../arch482-final-project/nav.html');
-	$('#nav').load('../nav.html');
+	$('#nav').load('./nav.html');
 });
 
 var counter = 1;
@@ -16,7 +16,7 @@ function addInput(divName){
      }
      else {
           var newdiv = document.createElement('span');
-          newdiv.innerHTML ="<br><input class='field' type='text' name='ingredients[]' placeholder='Ingredient " + (counter + 1) + "'>";
+          newdiv.innerHTML ="<br><input class='field " + counter +"' type='text' name='ingredients[]' placeholder='Ingredient " + (counter + 1) + "'>";
           document.getElementById(divName).appendChild(newdiv);
           counter++;
      }
