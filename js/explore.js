@@ -20,8 +20,10 @@ window.onload = () => {
             signout.style.display = "block";
             signout.style.cursor = "pointer";
             signout.addEventListener('click', () => {
-                firebase.auth().signOut();
-                window.location.href = "./index.html";
+                firebase.auth().signOut().then(() => {
+                    console.log('user signed out!');
+                    window.location.href = "./index.html";
+                }); 
             });
             
         }

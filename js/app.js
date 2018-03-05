@@ -70,13 +70,13 @@ window.onload = () => {
         if(user) {
             console.log('user logged in!');
             console.log(user);
-            window.location.href = "./explore.html";
             signout.style.display = "block";
             signout.style.cursor = "pointer";
             signout.addEventListener('click', () => {
                 firebase.auth().signOut();
                 window.location.href = "./index.html";
             });
+            window.location.href = "./explore.html";
         }
         else {
             console.log('no user logged in!');
