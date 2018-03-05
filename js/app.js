@@ -44,7 +44,6 @@ window.onload = () => {
     
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(user => {
-                console.log('user ' + user.uid + ' created');
 
                 let postData = {
                     name: firstName + lastName,

@@ -17,15 +17,21 @@ window.onload = () => {
     let signout = document.getElementById('signout');
     let ref = firebase.database().ref('/recipes');
 
-    // Listening for new recipes
-    let recipes = ref.on('child_added', snapshot => {
+    ref.once('value').then(snapshot => {
         console.log(snapshot.val());
+    })
+
+    // Listening for new recipes
+    ref.on('child_added', snapshot => {
+        console.log(snapshot.val());
+        let recipe = recipeToDOMString(snapshot.val());
+        $(RECIPE_DOM_SELECTOR).append(recipe);
+        $(LOADING_SELECTOR).hide();
     });
 
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
             console.log('user logged in!');
-            console.log(user);
             signout.style.display = "block";
             signout.style.cursor = "pointer";
             signout.addEventListener('click', () => {
@@ -44,23 +50,6 @@ window.onload = () => {
 
 }
 
-function renderAllRecipes() {
-	let ref = firebase.database().ref('/recipes');
-	var recipes = '';
-	ref.once('value')
-		.then(function(snapshot) {
-			snapshot.forEach(function(childSnapshot) {
-				recipes += recipeToDOMString(childSnapshot.val())
-
-		});
-	})
-	.then(function() {
-      $(RECIPE_DOM_SELECTOR).append(recipes);
-      $(LOADING_SELECTOR).hide();
-  });
-}
-
-
 function recipeToDOMString(recipe) {
 		return '<div class="recipe-item">'
 				//+ '<img width="300" src=' + recipe.url + '></br>'
@@ -72,5 +61,3 @@ function recipeToDOMString(recipe) {
 				+ '<b>Cooking Directions: </b>' + recipe.cookingDirections + '<br></span>'
 		+ '</div>';
 }
-
-renderAllRecipes();
