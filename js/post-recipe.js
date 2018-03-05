@@ -82,6 +82,7 @@ window.onload = () => {
         else {
             console.log('no user logged in!');
             signout.style.display = "none";
+            window.location.href = "./index.html";
         }
     });
 
