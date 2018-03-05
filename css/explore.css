@@ -18,3 +18,16 @@
 	border-radius: 20px;
 	margin-right: 10px;
 }
+
+.recipe-item {
+	margin-top: 45px;
+}
+
+.recipe-time {
+}
+
+#js-loading-icon {
+	width: 20%;
+  margin: 0 auto;
+	margin-top: 30px;
+}

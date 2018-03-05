@@ -15,11 +15,12 @@ let myRecipes = [];
 window.onload = () => {
 
     let signout = document.getElementById('signout');
-    let recipeForm = document.getElementById('recipe-form');
+    //let recipeForm = document.getElementById('recipe-form');
+		//recipeForm.addEventListener('submit', e => {
+		//e.preventDefault();
 
-    recipeForm.addEventListener('submit', e => {
-        
-        e.preventDefault();
+		let submitBtn = document.getElementById('submit');
+		submitBtn.addEventListener('click', function() {
 
         let ing = [];
 
@@ -33,7 +34,7 @@ window.onload = () => {
         for(let i = 0; i < ingredients.length; i++) {
             ing.push(ingredients[i].value);
         }
-        
+
         let postData = {
             name: name,
             servingSize: servingSize,
@@ -55,11 +56,11 @@ window.onload = () => {
         firebase.database().ref('/recipes/').on('child_added', (snapshot) => {
 
             location.reload();
-    
+
         });
 
     });
-    
+
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
             console.log('user logged in!');
@@ -76,7 +77,7 @@ window.onload = () => {
                 firebase.auth().signOut();
                 window.location.href = "./index.html";
             });
-            
+
         }
         else {
             console.log('no user logged in!');

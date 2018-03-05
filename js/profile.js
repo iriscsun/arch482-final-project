@@ -12,13 +12,25 @@ firebase.initializeApp(config);
 window.onload = () => {
 
     let signout = document.getElementById('signout');
+
     let ref = firebase.database().ref('/users/' + user.uid + '/recipes');
-    let myRecipes = ref.once('value')
+		let myRecipes = ref.once('value')
                         .then(snapshot => {
                             myRecipes = snapshot.val() || [];
                             console.log(myRecipes);
                         });
-    
+						
+		/*
+		console.log("user id: " + firebase.auth().currentUser.uid);
+
+		let ref = firebase.database().ref('/users/')
+			ref.once('value')
+				.then(function(snapshot) {
+				console.log(snapshot.val());
+			});
+		*/
+
+
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
             console.log('user logged in!');
@@ -28,7 +40,7 @@ window.onload = () => {
                 firebase.auth().signOut();
                 window.location.href = "./index.html";
             });
-            
+
         }
         else {
             console.log('no user logged in!');
