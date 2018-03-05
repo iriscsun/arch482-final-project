@@ -64,7 +64,7 @@ window.onload = () => {
         if(user) {
             console.log('user logged in!');
             userid = user.uid;
-            let ref = firebase.database().ref('/users/' + user.uid + '/recipes')
+            let ref = firebase.database().ref('/users/' + user.uid + '/recipes');
             myRecipes = ref.once('value')
                 .then(snapshot => {
                     myRecipes = snapshot.val() || [];
