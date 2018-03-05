@@ -12,6 +12,12 @@ firebase.initializeApp(config);
 window.onload = () => {
 
     let signout = document.getElementById('signout');
+    let ref = firebase.database().ref('/users/' + user.uid + '/recipes');
+    let myRecipes = ref.once('value')
+                        .then(snapshot => {
+                            myRecipes = snapshot.val() || [];
+                            console.log(myRecipes);
+                        });
     
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
