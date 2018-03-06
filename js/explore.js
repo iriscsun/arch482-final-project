@@ -17,7 +17,25 @@ window.onload = () => {
     let signout = document.getElementById('signout');
     let ref = firebase.database().ref('/recipes');
     let desserts = document.getElementById('dessert');
+    let breakfast = document.getElementById('breakfast');
+    let pasta = document.getElementById('pasta');
+    let chicken = document.getElementById('chicken');
+    let vegan = document.getElementById('vegan');
+    let all = document.getElementById('all');
     let recipeMount = document.getElementById('js-recipe-mount');
+
+    all.addEventListener('click', () => {
+        while(recipeMount.firstChild)
+            recipeMount.removeChild(recipeMount.firstChild);
+        ref.once('value').then(snapshot => {
+            let recipes = snapshot.val();
+            $.each(recipes, (index, item) => {
+                let rec = recipeToDOMString(item);
+                $(RECIPE_DOM_SELECTOR).append(rec);
+                $(LOADING_SELECTOR).hide();
+            });
+        });
+    });
 
     desserts.addEventListener('click', () => {
         while(recipeMount.firstChild)
@@ -26,20 +44,89 @@ window.onload = () => {
             let recipes = snapshot.val();
             $.each(recipes, (index, item) => {
                 if(item.tags === 'Dessert') {
-                    let desrec = recipeToDOMString(item);
-                    $(RECIPE_DOM_SELECTOR).append(desrec);
+                    let rec = recipeToDOMString(item);
+                    $(RECIPE_DOM_SELECTOR).append(rec);
                     $(LOADING_SELECTOR).hide();
                 }
             });
         });
     });
 
-    // Listening for new recipes
-    ref.on('child_added', snapshot => {
-        let recipe = recipeToDOMString(snapshot.val());
-        $(RECIPE_DOM_SELECTOR).append(recipe);
-        $(LOADING_SELECTOR).hide();
+    breakfast.addEventListener('click', () => {
+        while(recipeMount.firstChild)
+            recipeMount.removeChild(recipeMount.firstChild);
+        ref.once('value').then(snapshot => {
+            let recipes = snapshot.val();
+            $.each(recipes, (index, item) => {
+                if(item.tags === 'Breakfast') {
+                    let rec = recipeToDOMString(item);
+                    $(RECIPE_DOM_SELECTOR).append(rec);
+                    $(LOADING_SELECTOR).hide();
+                }
+            });
+        });
     });
+
+    pasta.addEventListener('click', () => {
+        while(recipeMount.firstChild)
+            recipeMount.removeChild(recipeMount.firstChild);
+        ref.once('value').then(snapshot => {
+            let recipes = snapshot.val();
+            $.each(recipes, (index, item) => {
+                if(item.tags === 'Pasta') {
+                    let rec = recipeToDOMString(item);
+                    $(RECIPE_DOM_SELECTOR).append(rec);
+                    $(LOADING_SELECTOR).hide();
+                }
+            });
+        });
+    });
+
+    chicken.addEventListener('click', () => {
+        while(recipeMount.firstChild)
+            recipeMount.removeChild(recipeMount.firstChild);
+        ref.once('value').then(snapshot => {
+            let recipes = snapshot.val();
+            $.each(recipes, (index, item) => {
+                if(item.tags === 'Chicken') {
+                    let rec = recipeToDOMString(item);
+                    $(RECIPE_DOM_SELECTOR).append(rec);
+                    $(LOADING_SELECTOR).hide();
+                }
+            });
+        });
+    });
+
+    vegan.addEventListener('click', () => {
+        while(recipeMount.firstChild)
+            recipeMount.removeChild(recipeMount.firstChild);
+        ref.once('value').then(snapshot => {
+            let recipes = snapshot.val();
+            $.each(recipes, (index, item) => {
+                if(item.tags === 'Vegan') {
+                    let rec = recipeToDOMString(item);
+                    $(RECIPE_DOM_SELECTOR).append(rec);
+                    $(LOADING_SELECTOR).hide();
+                }
+            });
+        });
+    });
+
+    ref.once('value').then(snapshot => {
+        let recipes = snapshot.val();
+        $.each(recipes, (index, item) => {
+            let rec = recipeToDOMString(item);
+            $(RECIPE_DOM_SELECTOR).append(rec);
+            $(LOADING_SELECTOR).hide();
+        });
+    });
+
+    // Listening for new recipes
+    // ref.once('child_added', snapshot => {
+    //     let recipe = recipeToDOMString(snapshot.val());
+    //     $(RECIPE_DOM_SELECTOR).append(recipe);
+    //     $(LOADING_SELECTOR).hide();
+    // });
 
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
