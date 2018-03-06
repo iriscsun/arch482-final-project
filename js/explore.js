@@ -151,5 +151,6 @@ function recipeToDOMString(recipe) {
 				+ '<b>Tags: </b>' + recipe.tags + '<br><span class="more-info">'
 				+ '<b>Ingredients: </b>' + recipe.ingredients.join(', ') + '<br>'
 				+ '<b>Cooking Directions: </b>' + recipe.cookingDirections + '<br></span>'
+				+ '<button type="button" class="btn btn-outline-success btn-sm save">&#x2665; Save Recipe</button>'
 		+ '</div>';
 }
