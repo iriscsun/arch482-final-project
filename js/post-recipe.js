@@ -45,12 +45,15 @@ window.onload = () => {
             myRecipes.push(recipekey);
             let recipe_updates = {};
             let user_updates = {};
+            let type_updates = {};
             recipe_updates['/recipes/' + recipekey] = postData;
             user_updates['/users/' + userid + '/recipes'] = myRecipes;
+            type_updates['/' + tags] = recipekey;
 
             // Updates firebase database
             firebase.database().ref().update(recipe_updates);
             firebase.database().ref().update(user_updates);
+            firebase.database().ref().update(type_updates);
 
             firebase.database().ref('/recipes/').on('child_added', (snapshot) => {
 

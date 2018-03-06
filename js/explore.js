@@ -22,23 +22,20 @@ window.onload = () => {
     desserts.addEventListener('click', () => {
         while(recipeMount.firstChild)
             recipeMount.removeChild(recipeMount.firstChild);
-        let desref = firebase.database().ref('/desserts');
-        desref.once('value').then(snapshot => {
-            let dessertsArray = snapshot.val();
-            dessertsArray.forEach(element => {
-                ref.child(element).once('value')
-                    .then(snapshot => {
-                        let desrec = recipeToDOMString(snapshot.val());
-                        $(RECIPE_DOM_SELECTOR).append(desrec);
-                        $(LOADING_SELECTOR).hide();
-                    });
+        ref.once('value').then(snapshot => {
+            let recipes = snapshot.val();
+            $.each(recipes, (index, item) => {
+                if(item.tags === 'Dessert') {
+                    let desrec = recipeToDOMString(item);
+                    $(RECIPE_DOM_SELECTOR).append(desrec);
+                    $(LOADING_SELECTOR).hide();
+                }
             });
         });
     });
 
     // Listening for new recipes
     ref.on('child_added', snapshot => {
-        console.log(snapshot.val());
         let recipe = recipeToDOMString(snapshot.val());
         $(RECIPE_DOM_SELECTOR).append(recipe);
         $(LOADING_SELECTOR).hide();

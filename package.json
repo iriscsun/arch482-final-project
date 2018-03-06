@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/iriscsun/arch482-final-project#readme",
   "dependencies": {
-    "firebase": "^4.10.1"
+    "firebase": "^4.10.1",
+    "string-similarity": "^1.2.0"
   }
 }
