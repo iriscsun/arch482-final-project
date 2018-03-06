@@ -16,10 +16,25 @@ window.onload = () => {
 
     let signout = document.getElementById('signout');
     let ref = firebase.database().ref('/recipes');
+    let desserts = document.getElementById('dessert');
+    let recipeMount = document.getElementById('js-recipe-mount');
 
-    ref.once('value').then(snapshot => {
-        console.log(snapshot.val());
-    })
+    desserts.addEventListener('click', () => {
+        while(recipeMount.firstChild)
+            recipeMount.removeChild(recipeMount.firstChild);
+        let desref = firebase.database().ref('/desserts');
+        desref.once('value').then(snapshot => {
+            let dessertsArray = snapshot.val();
+            dessertsArray.forEach(element => {
+                ref.child(element).once('value')
+                    .then(snapshot => {
+                        let desrec = recipeToDOMString(snapshot.val());
+                        $(RECIPE_DOM_SELECTOR).append(desrec);
+                        $(LOADING_SELECTOR).hide();
+                    });
+            });
+        });
+    });
 
     // Listening for new recipes
     ref.on('child_added', snapshot => {
