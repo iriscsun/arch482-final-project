@@ -8,6 +8,7 @@ let config = {
     messagingSenderId: "970186204682"
 };
 firebase.initializeApp(config);
+let isSigningUp = false;
 
 window.onload = () => {
 
@@ -35,7 +36,7 @@ window.onload = () => {
     signup_form.addEventListener('submit', e => {
         
         e.preventDefault();
-    
+        isSigningUp = true;
         let email = document.getElementById('email').value;
         let password = document.getElementById('password').value;
         let firstName = document.getElementById('first-name').value;
@@ -53,10 +54,10 @@ window.onload = () => {
 
                 let updates = {};
                 updates['/users/' + user.uid] = postData;
-                firebase.database().ref().update(updates);
-                firebase.database().ref('/users/').on('child_added', (snapshot) => {
+                firebase.database().ref().update(updates).then(() => {
+                    console.log('user added');
                     window.location.href = "./explore.html";
-                });
+                })
 
             })
             .catch(err => {
@@ -75,7 +76,8 @@ window.onload = () => {
                 firebase.auth().signOut();
                 window.location.href = "./index.html";
             });
-            window.location.href = "./explore.html";
+            if(!isSigningUp)
+                window.location.href = "./explore.html";
         }
         else {
             console.log('no user logged in!');
