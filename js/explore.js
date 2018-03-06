@@ -121,13 +121,6 @@ window.onload = () => {
         });
     });
 
-    // Listening for new recipes
-    // ref.once('child_added', snapshot => {
-    //     let recipe = recipeToDOMString(snapshot.val());
-    //     $(RECIPE_DOM_SELECTOR).append(recipe);
-    //     $(LOADING_SELECTOR).hide();
-    // });
-
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
             console.log('user logged in!');
