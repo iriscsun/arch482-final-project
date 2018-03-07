@@ -25,6 +25,23 @@ window.onload = () => {
     let vegan = document.getElementById('vegan');
     let all = document.getElementById('all');
     let recipeMount = document.getElementById('js-recipe-mount');
+    let search = document.getElementById('search');
+
+    search.addEventListener('click', () => {
+        while(recipeMount.firstChild)
+            recipeMount.removeChild(recipeMount.firstChild);
+        let query = document.getElementById('query').value || "";
+        ref.once('value').then(snapshot => {
+            let recipes = snapshot.val();
+            $.each(recipes, (index, item) => {
+                if(query == item.name) {
+                    let rec = recipeToDOMString(item);
+                    $(RECIPE_DOM_SELECTOR).append(rec);
+                    $(LOADING_SELECTOR).hide();
+                }
+            });
+        });
+    })
 
     all.addEventListener('click', () => {
         while(recipeMount.firstChild)
