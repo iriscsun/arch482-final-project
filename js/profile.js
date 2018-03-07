@@ -15,15 +15,34 @@ let myRecipes;
 
 window.onload = () => {
 
+    let username = document.getElementById('username');
+    let email = document.getElementById('email');
+    let name = document.getElementById('name');
+    let recipes = '#recipes';
+    let savedRecipes = '#saved-recipes';
     let signout = document.getElementById('signout');
 
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
-            ref = firebase.database().ref('/users/' + user.uid + '/recipes');
-            myRecipes = ref.once('value').then(snapshot => {
-                            myRecipes = snapshot.val() || [];
-														console.log(myRecipes);
-                        });
+            ref = firebase.database().ref('/users/' + user.uid);
+            rec_ref = firebase.database().ref('/recipes/');
+            ref.once('value', snapshot => {
+                username.innerHTML = username.innerHTML + ' ' + snapshot.val().username;
+                email.innerHTML = email.innerHTML + ' ' + snapshot.val().email;
+                name.innerHTML = name.innerHTML + ' ' + snapshot.val().name;
+                snapshot.val().recipes.forEach(element => {
+                    firebase.database().ref('/recipes/' + element).once('value', snapshot => {
+                        let rec = recipeToDOMString(snapshot.val());
+                        $(recipes).append(rec);
+                    });
+                });
+                snapshot.val().savedRecipes.forEach(element => {
+                    firebase.database().ref('/recipes/' + element).once('value', snapshot => {
+                        let rec = recipeToDOMString(snapshot.val());
+                        $(savedRecipes).append(rec);
+                    });
+                });
+            });
             console.log('user logged in!');
             console.log(user.uid);
             userid = user.uid;
@@ -42,4 +61,17 @@ window.onload = () => {
         }
     });
 
+}
+
+function recipeToDOMString(recipe) {
+
+    return '<div class="recipe-item">'
+            //+ '<img width="300" src=' + recipe.url + '></br>'
+            + '<h4>' + recipe.name + '</h4><br>'
+            + '<b>Recipe Time: </b>' + recipe.recipeTime + '<br>'
+            + '<b>Serves: </b>' + recipe.servingSize + '<br>'
+            + '<b>Tags: </b>' + recipe.tags + '<br><span class="more-info">'
+            + '<b>Ingredients: </b>' + recipe.ingredients.join(', ') + '<br>'
+            + '<b>Cooking Directions: </b>' + recipe.cookingDirections + '<br></span>'
+    + '</div>';
 }

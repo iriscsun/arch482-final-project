@@ -1,1 +1,6 @@
-
+.recipe-item {
+	margin-top: 25px;
+	border: 1px solid #dfd7ca;
+	padding: 15px;
+	border-radius: 5px;
+}
