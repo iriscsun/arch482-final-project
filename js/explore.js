@@ -125,15 +125,12 @@ window.onload = () => {
 
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
-            console.log('user logged in!');
             userid = user.uid;
             let ref = firebase.database().ref('/users/' + user.uid + '/saved_recipes');
             ref.once('value')
                 .then(snapshot => {
                     savedRecipes = snapshot.val() || [];
-                    console.log(savedRecipes);
                 });
-            console.log(savedRecipes);
             signout.style.display = "block";
             signout.style.cursor = "pointer";
             signout.addEventListener('click', () => {
@@ -166,7 +163,6 @@ function recipeToDOMString(recipe) {
 
         let addSave = '';
         if(recipe.userid != userid) {
-            console.log('inside if');
             addSave = '<p id=' + recipe.key + ' class="save-recipe" onclick="saveRecipe(this.id)">Save</>'
         }
         if(userid == null)
