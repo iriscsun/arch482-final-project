@@ -4,3 +4,12 @@
 	padding: 15px;
 	border-radius: 5px;
 }
+
+h1, h2 {
+	color: #cec5b5 !important;
+	font-weight: 600;
+}
+
+.user {
+	font-size: 1.1em;
+}

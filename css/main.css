@@ -9,7 +9,8 @@ h1, h2, h3, h4 {
 }
 
 #credentials {
-	max-width: 350px;
+	max-width: 400px;
+	min-width: 300px;
 	width: 80%;
 	border: 1px solid #dfd7ca;
 	padding: 30px 30px 10px 30px;
@@ -24,6 +25,12 @@ h1, h2, h3, h4 {
   	border-color: #ed706b;
 	color: white;
 	font-family: 'Poppins'
+}
+
+#cook {
+	margin: 30px 20px 30px 0px;
+	max-width: 500px;
+	width: 80%;
 }
 
 .btn-outline-success:hover {

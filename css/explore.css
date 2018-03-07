@@ -1,8 +1,8 @@
 body {
-	padding-bottom: 100px;
+	margin-bottom: 100px;
 }
 
-#search-form {
+#query {
 	max-width:800px;
 	width:80%;
 }
@@ -42,6 +42,8 @@ body {
 .save-recipe {
 	color: #ed706b;
 	font-weight: 100;
+	padding: 3px 5px 3px 5px;
+	border-radius: 3px;
 }
 
 .save-recipe:hover {

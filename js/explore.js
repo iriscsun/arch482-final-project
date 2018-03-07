@@ -159,7 +159,7 @@ window.onload = () => {
         }
         else {
             console.log('no user logged in!');
-            signout.style.display = "none";
+            // signout.style.display = "none";
         }
     });
 
@@ -178,19 +178,28 @@ function recipeToDOMString(recipe) {
 
         let addSave = '';
         if(recipe.userid != userid) {
-            addSave = '<p id=' + recipe.key + ' class="save-recipe" onclick="saveRecipe(this.id)">Save</>'
+            addSave = '<span id=' + recipe.key + ' class="save-recipe btn-outline-success" onclick="saveRecipe(this.id)">Save<span/>'
         }
         if(userid == null)
             addSave = '';
 
-		return '<div class="recipe-item">'
-				//+ '<img width="300" src=' + recipe.url + '></br>'
-				+ '<h4>' + recipe.name + '</h4><br>'
-				+ '<b>Recipe Time: </b>' + recipe.recipeTime + '<br>'
-				+ '<b>Serves: </b>' + recipe.servingSize + '<br>'
-				+ '<b>Tags: </b>' + recipe.tags + '<br><span class="more-info">'
-				+ '<b>Ingredients: </b>' + recipe.ingredients.join(', ') + '<br>'
-                + '<b>Cooking Directions: </b>' + recipe.cookingDirections + '<br></span>'
-                + addSave
-		+ '</div>';
+
+		return (
+			'<div class="recipe-item">'
+				+ '<div class="row">'
+					+ '<div class="col-6 col-md-4">'
+						//+ '<img width="300" src=' + recipe.url + '></br>'
+						+ '<h4>' + recipe.name + '</h4><br>'
+						+ '<b>Recipe Time: </b>' + recipe.recipeTime + '<br>'
+						+ '<b>Serves: </b>' + recipe.servingSize + '<br>'
+						+ '<b>Tags: </b>' + recipe.tags + '<br><span class="more-info">'
+						+ '<b>Ingredients: <br></b><ul><li>' + recipe.ingredients.join("</li><li>") + '</li></ul>'
+		                + addSave
+					+ '</div>'
+					+ '<div class="col col-md-8">'
+						+ '<b>Cooking Directions: </b>' + recipe.cookingDirections + '<br></span>'
+					+ '</div>'
+				+ '</div>'
+			+ '</div>'
+	);
 }

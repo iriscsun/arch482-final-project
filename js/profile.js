@@ -60,18 +60,26 @@ window.onload = () => {
             window.location.href = "./index.html";
         }
     });
-
 }
 
 function recipeToDOMString(recipe) {
 
-    return '<div class="recipe-item">'
-            //+ '<img width="300" src=' + recipe.url + '></br>'
-            + '<h4>' + recipe.name + '</h4><br>'
-            + '<b>Recipe Time: </b>' + recipe.recipeTime + '<br>'
-            + '<b>Serves: </b>' + recipe.servingSize + '<br>'
-            + '<b>Tags: </b>' + recipe.tags + '<br><span class="more-info">'
-            + '<b>Ingredients: </b>' + recipe.ingredients.join(', ') + '<br>'
-            + '<b>Cooking Directions: </b>' + recipe.cookingDirections + '<br></span>'
-    + '</div>';
+    return (
+			'<div class="recipe-item">'
+				+ '<div class="row">'
+					+ '<div class="col-6 col-md-4">'
+						//+ '<img width="300" src=' + recipe.url + '></br>'
+						+ '<h4>' + recipe.name + '</h4><br>'
+						+ '<b>Recipe Time: </b>' + recipe.recipeTime + '<br>'
+						+ '<b>Serves: </b>' + recipe.servingSize + '<br>'
+						+ '<b>Tags: </b>' + recipe.tags + '<br><span class="more-info">'
+						+ '<b>Ingredients: <br></b><ul><li>' + recipe.ingredients.join("</li><li>") + '</li></ul>'
+					+ '</div>'
+					+ '<div class="col col-md-8">'
+						+ '<b>Cooking Directions: </b>' + recipe.cookingDirections + '<br></span>'
+					+ '</div>'
+				+ '</div>'
+			+ '</div>'
+
+		);
 }

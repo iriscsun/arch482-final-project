@@ -15,14 +15,14 @@ window.onload = () => {
     let signup_form = document.getElementById('signup-form');
     let login_form = document.getElementById('login-form');
     let signout = document.getElementById('signout');
-    
+
     login_form.addEventListener('submit', e => {
-        
+
         e.preventDefault();
-    
+
         let email = document.getElementById('login-email').value;
         let password = document.getElementById('login-password').value;
-    
+
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(user => {
                 console.log('user ' + user.uid + ' logged in');
@@ -30,11 +30,11 @@ window.onload = () => {
             .catch(err => {
                 console.log(err);
             });
-    
+
     });
 
     signup_form.addEventListener('submit', e => {
-        
+
         e.preventDefault();
         isSigningUp = true;
         let email = document.getElementById('email').value;
@@ -42,7 +42,7 @@ window.onload = () => {
         let firstName = document.getElementById('first-name').value;
         let lastName = document.getElementById('last-name').value;
         let userName = document.getElementById('username').value;
-    
+
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(user => {
 
@@ -63,9 +63,9 @@ window.onload = () => {
             .catch(err => {
                 console.log(err);
             });
-    
+
     });
-    
+
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
             console.log('user logged in!');
@@ -81,9 +81,8 @@ window.onload = () => {
         }
         else {
             console.log('no user logged in!');
-            signout.style.display = "none";
+            // signout.style.display = "none";
         }
     });
 
 }
-
