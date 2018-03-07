@@ -11,6 +11,8 @@ firebase.initializeApp(config);
 
 var RECIPE_DOM_SELECTOR = '#js-recipe-mount';
 var LOADING_SELECTOR = '#js-loading-icon';
+let userid = null;
+let savedRecipes;
 
 window.onload = () => {
 
@@ -124,6 +126,14 @@ window.onload = () => {
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
             console.log('user logged in!');
+            userid = user.uid;
+            let ref = firebase.database().ref('/users/' + user.uid + '/saved_recipes');
+            ref.once('value')
+                .then(snapshot => {
+                    savedRecipes = snapshot.val() || [];
+                    console.log(savedRecipes);
+                });
+            console.log(savedRecipes);
             signout.style.display = "block";
             signout.style.cursor = "pointer";
             signout.addEventListener('click', () => {
@@ -142,7 +152,26 @@ window.onload = () => {
 
 }
 
+saveRecipe = (id) => {
+    console.log(id);
+    savedRecipes.push(id);
+    let saved_recipes_updates = {};
+    saved_recipes_updates['/users/' + userid + '/savedRecipes'] = savedRecipes;
+    firebase.database().ref().update(saved_recipes_updates).then(() => {
+        console.log('recipe added');
+    })
+}
+
 function recipeToDOMString(recipe) {
+
+        let addSave = '';
+        if(recipe.userid != userid) {
+            console.log('inside if');
+            addSave = '<p id=' + recipe.key + ' class="save-recipe" onclick="saveRecipe(this.id)">Save</>'
+        }
+        if(userid == null)
+            addSave = '';
+
 		return '<div class="recipe-item">'
 				//+ '<img width="300" src=' + recipe.url + '></br>'
 				+ '<h4>' + recipe.name + '</h4><br>'
@@ -150,6 +179,7 @@ function recipeToDOMString(recipe) {
 				+ '<b>Serves: </b>' + recipe.servingSize + '<br>'
 				+ '<b>Tags: </b>' + recipe.tags + '<br><span class="more-info">'
 				+ '<b>Ingredients: </b>' + recipe.ingredients.join(', ') + '<br>'
-				+ '<b>Cooking Directions: </b>' + recipe.cookingDirections + '<br></span>'
+                + '<b>Cooking Directions: </b>' + recipe.cookingDirections + '<br></span>'
+                + addSave
 		+ '</div>';
 }

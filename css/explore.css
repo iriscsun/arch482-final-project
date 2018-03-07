@@ -28,6 +28,16 @@
 
 #js-loading-icon {
 	width: 20%;
-  margin: 0 auto;
+  	margin: 0 auto;
 	margin-top: 30px;
+}
+
+.save-recipe {
+	color: #ed706b;
+	font-weight: 100;
+}
+
+.save-recipe:hover {
+	cursor: pointer;
+	font-weight: 400;
 }
