@@ -143,9 +143,8 @@ window.onload = () => {
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
             userid = user.uid;
-            let ref = firebase.database().ref('/users/' + user.uid + '/saved_recipes');
-            ref.once('value')
-                .then(snapshot => {
+            let ref = firebase.database().ref('/users/' + user.uid + '/savedRecipes');
+            ref.once('value').then(snapshot => {
                     savedRecipes = snapshot.val() || [];
                 });
             signout.style.display = "block";
@@ -167,7 +166,6 @@ window.onload = () => {
 }
 
 saveRecipe = (id) => {
-    console.log(id);
     savedRecipes.push(id);
     let saved_recipes_updates = {};
     saved_recipes_updates['/users/' + userid + '/savedRecipes'] = savedRecipes;
