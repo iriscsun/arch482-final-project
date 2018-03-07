@@ -22,6 +22,7 @@ window.onload = () => {
             ref = firebase.database().ref('/users/' + user.uid + '/recipes');
             myRecipes = ref.once('value').then(snapshot => {
                             myRecipes = snapshot.val() || [];
+														console.log(myRecipes);
                         });
             console.log('user logged in!');
             console.log(user.uid);
