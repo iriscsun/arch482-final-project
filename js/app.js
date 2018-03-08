@@ -14,8 +14,6 @@ window.onload = () => {
 
     let signup_form = document.getElementById('signup-form');
     let login_form = document.getElementById('login-form');
-    let signout = document.getElementById('signout');
-
     login_form.addEventListener('submit', e => {
 
         e.preventDefault();
@@ -69,19 +67,13 @@ window.onload = () => {
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
             console.log('user logged in!');
-            console.log(user);
-            signout.style.display = "block";
-            signout.style.cursor = "pointer";
-            signout.addEventListener('click', () => {
-                firebase.auth().signOut();
-                window.location.href = "./index.html";
-            });
-            if(!isSigningUp)
+            
+            if(!isSigningUp) {
                 window.location.href = "./explore.html";
+            }
         }
         else {
             console.log('no user logged in!');
-            // signout.style.display = "none";
         }
     });
 

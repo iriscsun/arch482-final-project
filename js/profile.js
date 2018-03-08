@@ -56,7 +56,7 @@ window.onload = () => {
         }
         else {
             console.log('no user logged in!');
-            signout.style.display = "none";
+            signout.style.visibility = "hidden";
             window.location.href = "./index.html";
         }
     });
@@ -70,7 +70,7 @@ function recipeToDOMString(recipe) {
 					+ '<div class="col-6 col-md-4">'
 						//+ '<img width="300" src=' + recipe.url + '></br>'
 						+ '<h4>' + recipe.name + '</h4><br>'
-						+ '<img width="250" src=' + 'https://www.seriouseats.com/recipes/images/2016/08/20160827-cherry-tomato-pasta-13-1500x1125.jpg' + '></br></br>'
+						+ '<img width="250" src=' + recipe.image + '></br></br>'
 						+ '<b>Recipe Time: </b>' + recipe.recipeTime + '<br>'
 						+ '<b>Serves: </b>' + recipe.servingSize + '<br>'
 						+ '<b>Tags: </b>' + recipe.tags + '<br><span class="more-info">'

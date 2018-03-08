@@ -16,7 +16,6 @@ let savedRecipes;
 
 window.onload = () => {
 
-    let signout = document.getElementById('signout');
     let ref = firebase.database().ref('/recipes');
     let desserts = document.getElementById('dessert');
     let breakfast = document.getElementById('breakfast');
@@ -26,6 +25,7 @@ window.onload = () => {
     let all = document.getElementById('all');
     let recipeMount = document.getElementById('js-recipe-mount');
     let search = document.getElementById('search');
+    
 
     search.addEventListener('click', () => {
         while(recipeMount.firstChild)
@@ -147,19 +147,9 @@ window.onload = () => {
             ref.once('value').then(snapshot => {
                     savedRecipes = snapshot.val() || [];
                 });
-            signout.style.display = "block";
-            signout.style.cursor = "pointer";
-            signout.addEventListener('click', () => {
-                firebase.auth().signOut().then(() => {
-                    console.log('user signed out!');
-                    window.location.href = "./index.html";
-                });
-            });
-
         }
         else {
             console.log('no user logged in!');
-            // signout.style.display = "none";
         }
     });
 
@@ -189,7 +179,7 @@ function recipeToDOMString(recipe) {
 				+ '<div class="row">'
 					+ '<div class="col-6 col-md-4">'
 						+ '<h4>' + recipe.name + '</h4><br>'
-						+ '<img width="250" src=' + 'https://www.seriouseats.com/recipes/images/2016/08/20160827-cherry-tomato-pasta-13-1500x1125.jpg' + '></br></br>'
+						+ '<img width="250" src=' + recipe.image + '></br></br>'
 						+ '<b>Recipe Time: </b>' + recipe.recipeTime + '<br>'
 						+ '<b>Serves: </b>' + recipe.servingSize + '<br>'
 						+ '<b>Tags: </b>' + recipe.tags + '<br><span class="more-info">'

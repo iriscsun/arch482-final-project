@@ -14,7 +14,6 @@ let myRecipes = [];
 
 window.onload = () => {
 
-    let signout = document.getElementById('signout');
 
 		let submitBtn = document.getElementById('submit');
 		submitBtn.addEventListener('click', function() {
@@ -27,6 +26,7 @@ window.onload = () => {
             let cookingDirections = document.getElementsByClassName('cooking-directions')[0].value;
             let tags = document.getElementById('tags').value;
             let ingredients = document.getElementsByClassName('ingredient');
+            let recipePic = document.getElementById('recipe-pic').value || "";
 
             for(let i = 0; i < ingredients.length; i++) {
                 ing.push(ingredients[i].value);
@@ -41,7 +41,8 @@ window.onload = () => {
                 tags: tags,
                 ingredients: ing,
                 userid: userid,
-                key: recipekey
+                key: recipekey,
+                image: recipePic
             }
             myRecipes.push(recipekey);
             let recipe_updates = {};
@@ -71,17 +72,9 @@ window.onload = () => {
                     myRecipes = snapshot.val() || [];
                     console.log(myRecipes);
                 });
-            signout.style.display = "block";
-            signout.style.cursor = "pointer";
-            signout.addEventListener('click', () => {
-                firebase.auth().signOut();
-                window.location.href = "./index.html";
-            });
-
         }
         else {
             console.log('no user logged in!');
-            signout.style.display = "none";
             window.location.href = "./index.html";
         }
     });
