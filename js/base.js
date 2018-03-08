@@ -4,14 +4,17 @@ $(document).ready(function () {
 
 	firebase.auth().onAuthStateChanged(user => {
 			if(user) {
+				//load in nav bar to html pages, uncomment this line of code when uploading to server
+				//$('#nav').load('../arch482-final-project/nav.html');
 				$('#nav').load('./nav.html');
 			}
 			else {
+				//load in nav bar to html pages, uncomment this line of code when uploading to server
+				//$('#nav').load('../arch482-final-project/nav-partial.html');
 				$('#nav').load('./nav-partial.html');
 			}
 	});
-	//load in nav bar to html pages, uncomment this line of code when uploading to server
-	//$('#nav').load('../arch482-final-project/nav.html');
+
 
 });
 
